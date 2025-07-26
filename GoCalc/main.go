@@ -9,12 +9,17 @@ import (
 )
 
 func main() {
-	var err1, err2 error
-	var conversion1, conversion2 float64
+	oneArgArray := []string {"add", "sub", "mult", "div", "percof"}
+	twoArgArray := []string {"sine", "sqroot"}
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
 		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable operators:")
-		fmt.Print("-add\n-sub\n-mult\n-div\n-percof\n-sqroot\n-sine")
+		for i := 0; i < len(oneArgArray); i++ { 
+			fmt.Printf("-%s\n", oneArgArray[i])
+		}
+		for i := 0; i < len(twoArgArray); i++ {
+			fmt.Printf("-%s\n", twoArgArray[i])
+		}
 		fmt.Println("Note: some operators require only one argument.")
 		return
 	}
@@ -24,8 +29,8 @@ func main() {
 		return
 	}
 
-	conversion1, err1 = strconv.ParseFloat(os.Args[2], 64)
-	conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
+	var conversion1, err1 = strconv.ParseFloat(os.Args[2], 64)
+	var conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
 
 	if err1 != nil || err2 != nil {
 		fmt.Println("Error: Invalid Number Arguments.")
