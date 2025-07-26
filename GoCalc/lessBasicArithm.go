@@ -11,7 +11,7 @@ func sqroot(x float64) float64 {
 }
 
 func deg2rad(x float64) float64 {
-	return x / math.Pi * 180
+	return x * math.Pi / 180
 }
 
 func rad2deg(x float64) float64 {
@@ -19,7 +19,7 @@ func rad2deg(x float64) float64 {
 }
 
 func degsine(x float64) float64 {
-	return math.Sin(deg2rad(x))
+	return math.Sin(deg2rad(x)) 
 }
 
 func radsine(x float64) float64 {
