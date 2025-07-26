@@ -34,7 +34,7 @@ func main() {
 	var err1, err2 error
 
 	conversion1, err1 = strconv.ParseFloat(os.Args[2], 64)
-	if len(os.Args) < 3 {
+	if len(os.Args) == 4 {
 		conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
 	}
 
