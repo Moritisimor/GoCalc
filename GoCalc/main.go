@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	oneArgArray := []string {"add", "sub", "mult", "div", "percof"}
-	twoArgArray := []string {"sine", "sqroot"}
+	twoArgArray := []string {"add", "sub", "mult", "div", "percof"}
+	oneArgArray := []string {"sine", "sqroot"}
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
 		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable double Argument operators:")
@@ -21,17 +21,22 @@ func main() {
 		for i := 0; i < len(twoArgArray); i++ {
 			fmt.Printf("-%s\n", twoArgArray[i])
 		}
-		fmt.Println("Note: some operators require only one argument.")
+		fmt.Println("Note: some operators require only one argument.") // Although giving two arguments will not give an error, it will only use the first argument.
+		return // Likewise giving an operator which usually takes 2 numeric arguments will not give an error either, it will simply perform operations with 0
+	}
+
+	if len(os.Args) < 3 || len(os.Args) > 4 {
+		fmt.Printf("Error: Invalid Argument Quantity. 2 or 3 expected, got %d\n", len(os.Args) - 1)
 		return
 	}
 
-	if len(os.Args) != 4 {
-		fmt.Printf("Error: 3 Arguments expected, got %d\n", len(os.Args) - 1) // The first argument is the program name
-		return
-	}
+	var conversion1, conversion2 float64
+	var err1, err2 error
 
-	var conversion1, err1 = strconv.ParseFloat(os.Args[2], 64)
-	var conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
+	conversion1, err1 = strconv.ParseFloat(os.Args[2], 64)
+	if len(os.Args) < 3 {
+		conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
+	}
 
 	if err1 != nil || err2 != nil {
 		fmt.Println("Error: Invalid Number Arguments.")
@@ -57,7 +62,7 @@ func main() {
 				return
 			}
 			fmt.Println("Error: Divison by Zero.")
-		case "sqroot": // Requires two number arguments but 2nd argument is ignored. TODO: Fix this
+		case "sqroot":
 			fmt.Printf("%f\n", sqroot(conversion1))
 		case "sine":
 			fmt.Printf("%f\n", sine(conversion1))
