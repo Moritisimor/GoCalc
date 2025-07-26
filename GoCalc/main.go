@@ -13,10 +13,11 @@ func main() {
 	twoArgArray := []string {"sine", "sqroot"}
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
-		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable operators:")
+		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable double Argument operators:")
 		for i := 0; i < len(oneArgArray); i++ { 
 			fmt.Printf("-%s\n", oneArgArray[i])
 		}
+		fmt.Println("Available single Argument operators:")
 		for i := 0; i < len(twoArgArray); i++ {
 			fmt.Printf("-%s\n", twoArgArray[i])
 		}
@@ -57,9 +58,9 @@ func main() {
 			}
 			fmt.Println("Error: Divison by Zero.")
 		case "sqroot": // Requires two number arguments but 2nd argument is ignored. TODO: Fix this
-			fmt.Printf("%f", sqroot(conversion1))
+			fmt.Printf("%f\n", sqroot(conversion1))
 		case "sine":
-			fmt.Printf("%f", sine(conversion1))
+			fmt.Printf("%f\n", sine(conversion1))
 		default:
 			fmt.Println("Error: Invalid Operator Argument.")
 	}
