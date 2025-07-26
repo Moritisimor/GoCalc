@@ -22,7 +22,7 @@ func main() {
 			fmt.Printf("-%s\n", op)
 		}
 		fmt.Println("Note: some operators require only one argument.") // Although giving two arguments will not give an error, it will only use the first argument.
-		return // Likewise giving an operator which usually takes 2 numeric arguments will not give an error either, it will simply perform operations with 0
+		return // Likewise giving an operator which usually takes 2 numeric arguments only one will not give an error either, it will simply perform operations with 0 as arg 2
 	}
 
 	if len(os.Args) < 3 || len(os.Args) > 4 {
