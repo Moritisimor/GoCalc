@@ -14,7 +14,8 @@ func main() {
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
 		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable operators:")
-		fmt.Print("-add\n-sub\n-mult\n-div\n-percof\n-sqroot\n-sin") // TODO: Implement sin
+		fmt.Print("-add\n-sub\n-mult\n-div\n-percof\n-sqroot\n-sine")
+		fmt.Println("Note: some operators require only one argument.")
 		return
 	}
 
@@ -52,6 +53,8 @@ func main() {
 			fmt.Println("Error: Divison by Zero.")
 		case "sqroot": // Requires two number arguments but 2nd argument is ignored. TODO: Fix this
 			fmt.Printf("%f", sqroot(conversion1))
+		case "sine":
+			fmt.Printf("%f", sine(conversion1))
 		default:
 			fmt.Println("Error: Invalid Operator Argument.")
 	}

@@ -9,3 +9,7 @@ func percof(x, y float64) float64 {
 func sqroot(x float64) float64 {
 	return math.Sqrt(x)
 }
+
+func sine(x float64) float64 {
+	return math.Sin(x)
+}
