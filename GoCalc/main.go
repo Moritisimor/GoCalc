@@ -14,12 +14,12 @@ func main() {
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
 		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable double Argument operators:")
-		for i := 0; i < len(oneArgArray); i++ { 
-			fmt.Printf("-%s\n", oneArgArray[i])
+		for _, op := range twoArgArray {
+			fmt.Printf("-%s\n", op)
 		}
 		fmt.Println("Available single Argument operators:")
-		for i := 0; i < len(twoArgArray); i++ {
-			fmt.Printf("-%s\n", twoArgArray[i])
+		for _, op := range oneArgArray {
+			fmt.Printf("-%s\n", op)
 		}
 		fmt.Println("Note: some operators require only one argument.") // Although giving two arguments will not give an error, it will only use the first argument.
 		return // Likewise giving an operator which usually takes 2 numeric arguments will not give an error either, it will simply perform operations with 0
@@ -38,7 +38,7 @@ func main() {
 		conversion2, err2 = strconv.ParseFloat(os.Args[3], 64)
 	}
 
-	if err1 != nil || err2 != nil {
+	if err1 != nil || (len(os.Args) == 4 && err2 != nil) {
 		fmt.Println("Error: Invalid Number Arguments.")
 		return
 	}
@@ -61,9 +61,10 @@ func main() {
 				fmt.Printf("Result: %f\n", percof(conversion1, conversion2))
 				return
 			}
-			fmt.Println("Error: Divison by Zero.")
+			fmt.Println("Error: Division by Zero.")
 
-		case "sqroot": // Two args begin here
+		// Single-argument operators begin here
+		case "sqroot":
 			fmt.Printf("Result: %f\n", sqroot(conversion1))
 		case "degsine":
 			fmt.Printf("Result: %f\n", degsine(conversion1))
