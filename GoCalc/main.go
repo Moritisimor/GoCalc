@@ -32,14 +32,14 @@ func main() {
 
 	for i := 0; i < len(oneArgArray); i++ {
 		if os.Args[1] == oneArgArray[i] && len(os.Args) != 3 {
-			fmt.Printf("Error: this operator takes one argument, but got %d\n", len(os.Args) - 1)
+			fmt.Printf("Error: this operator takes 1 argument, but got %d\n", len(os.Args) - 2) // Since the operator and program themselves are not arguments in this case
 			return
 		}
 	}
 
 	for i := 0; i < len(twoArgArray); i++ {
 		if os.Args[1] == twoArgArray[i] && len(os.Args) != 4 {
-			fmt.Printf("Error: this operator takes one argument, but got %d\n", len(os.Args) - 1)
+			fmt.Printf("Error: this operator takes 2 arguments, but got %d\n", len(os.Args) - 2)
 			return
 		}
 	}
