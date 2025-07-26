@@ -62,7 +62,8 @@ func main() {
 				return
 			}
 			fmt.Println("Error: Divison by Zero.")
-		case "sqroot":
+
+		case "sqroot": // Two args begin here
 			fmt.Printf("Result: %f\n", sqroot(conversion1))
 		case "degsine":
 			fmt.Printf("Result: %f\n", degsine(conversion1))
