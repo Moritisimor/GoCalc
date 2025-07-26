@@ -9,6 +9,11 @@ import (
 )
 
 func main() {
+	if len(os.Args) < 3 {
+		fmt.Println("Error: At least 2 arguments are required.")
+		return
+	}
+
 	twoArgArray := []string {"add", "sub", "mult", "div", "percof"}
 	oneArgArray := []string {"degsine", "radsine", "deg2rad", "rad2deg", "sqroot"}
 
@@ -21,13 +26,22 @@ func main() {
 		for _, op := range oneArgArray {
 			fmt.Printf("-%s\n", op)
 		}
-		fmt.Println("Note: some operators require only one argument.") // Although giving two arguments will not give an error, it will only use the first argument.
-		return // Likewise giving an operator which usually takes 2 numeric arguments only one will not give an error either, it will simply perform operations with 0 as arg 2
+		fmt.Println("Note: some operators require only one argument.")
+		return 
 	}
 
-	if len(os.Args) < 3 || len(os.Args) > 4 {
-		fmt.Printf("Error: Invalid Argument Quantity. 2 or 3 expected, got %d\n", len(os.Args) - 1)
-		return
+	for i := 0; i < len(oneArgArray); i++ {
+		if os.Args[1] == oneArgArray[i] && len(os.Args) != 3 {
+			fmt.Printf("Error: this operator takes one argument, but got %d\n", len(os.Args) - 1)
+			return
+		}
+	}
+
+	for i := 0; i < len(twoArgArray); i++ {
+		if os.Args[1] == twoArgArray[i] && len(os.Args) != 4 {
+			fmt.Printf("Error: this operator takes one argument, but got %d\n", len(os.Args) - 1)
+			return
+		}
 	}
 
 	var conversion1, conversion2 float64
