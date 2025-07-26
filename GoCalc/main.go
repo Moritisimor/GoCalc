@@ -10,7 +10,7 @@ import (
 
 func main() {
 	twoArgArray := []string {"add", "sub", "mult", "div", "percof"}
-	oneArgArray := []string {"sine", "sqroot"}
+	oneArgArray := []string {"degsine", "radsine", "deg2rad", "rad2deg", "sqroot"}
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
 		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable double Argument operators:")
@@ -63,9 +63,15 @@ func main() {
 			}
 			fmt.Println("Error: Divison by Zero.")
 		case "sqroot":
-			fmt.Printf("%f\n", sqroot(conversion1))
-		case "sine":
-			fmt.Printf("%f\n", sine(conversion1))
+			fmt.Printf("Result: %f\n", sqroot(conversion1))
+		case "degsine":
+			fmt.Printf("Result: %f\n", degsine(conversion1))
+		case "radsine":
+			fmt.Printf("Result: %f\n", radsine(conversion1))
+		case "deg2rad":
+			fmt.Printf("Result: %f\n", deg2rad(conversion1))
+		case "rad2deg":
+			fmt.Printf("Result %f\n", rad2deg(conversion1))
 		default:
 			fmt.Println("Error: Invalid Operator Argument.")
 	}
