@@ -9,16 +9,11 @@ import (
 )
 
 func main() {
-	if len(os.Args) < 3 {
-		fmt.Println("Error: At least 2 arguments are required.")
-		return
-	}
-
 	twoArgArray := []string {"add", "sub", "mult", "div", "percof"}
 	oneArgArray := []string {"degsine", "radsine", "deg2rad", "rad2deg", "sqroot"}
 
 	if len(os.Args) > 1 && os.Args[1] == "help" {
-		fmt.Println("How to use: gocalc (Operator) (Number 1) (Number 2) \nAvailable double Argument operators:")
+		fmt.Println("\nHow to use: gocalc (Operator) (Number 1) (Number 2*) \nAvailable double Argument operators:")
 		for _, op := range twoArgArray {
 			fmt.Printf("-%s\n", op)
 		}
@@ -28,6 +23,11 @@ func main() {
 		}
 		fmt.Println("Note: some operators require only one argument.")
 		return 
+	}
+
+	if len(os.Args) < 3 {
+		fmt.Println("Error: At least 2 arguments are required.")
+		return
 	}
 
 	for i := 0; i < len(oneArgArray); i++ {
